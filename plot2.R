@@ -7,10 +7,12 @@ data <- read.table('household_power_consumption.txt', sep=";",
 data <- data[data$Date == '1/2/2007' | data$Date == '2/2/2007', ]
 # filter out missing data
 plotData <- data[data$Global_active_power != '?', ]
+
+# transfer data to date and numeric class
 plotData$DateTime <- strptime(paste(plotData$Date, plotData$Time), '%d/%m/%Y %H:%M:%S')
 plotData$Global_active_power <- as.numeric(plotData$Global_active_power)
   
-# Draw the histogram to a png file
+# Draw the line chart to a png file
 png(file='plot2.png', width = 480, height = 480)
 plot(plotData$DateTime, plotData$Global_active_power, type='l',
      xlab = '', ylab = 'Global Active Power (kilowatts)')
