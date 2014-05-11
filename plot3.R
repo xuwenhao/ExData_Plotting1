@@ -4,7 +4,7 @@ data <- read.table('household_power_consumption.txt', sep=";",
                    stringsAsFactors = FALSE, header=TRUE)
 
 # filter to get only data in '01/02/2007' and '02/02/2007'
-data <- data[data$Date == '1/2/2007' | data$Date == '2/2/2007', ]
+plotData <- data[data$Date == '1/2/2007' | data$Date == '2/2/2007', ]
 
 plotData$DateTime <- strptime(paste(plotData$Date, plotData$Time), '%d/%m/%Y %H:%M:%S')
 plotData$Sub_metering_1 <- as.numeric(plotData$Sub_metering_1)
